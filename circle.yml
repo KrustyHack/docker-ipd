@@ -13,5 +13,5 @@ test:
     - docker run -d --name ipd krustyhack/ipd
     - docker logs -f ipd > ${CIRCLE_ARTIFACTS}/ipd.log:
           background: true
-    - sleep 5
+    - sleep 60
     - grep "Listening on" -a ${CIRCLE_ARTIFACTS}/ipd.log
