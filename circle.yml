@@ -11,7 +11,7 @@ dependencies:
 test:
   override:
     - docker run -d --name ipd krustyhack/ipd
-    - docker logs -f ipd > tee -a ${CIRCLE_ARTIFACTS}/ipd.log:
+    - docker logs -f ipd > ${CIRCLE_ARTIFACTS}/ipd.log:
           background: true
     - sleep 5
     - grep "Listening on" -a ${CIRCLE_ARTIFACTS}/ipd.log
