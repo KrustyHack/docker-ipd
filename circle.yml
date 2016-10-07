@@ -1,0 +1,16 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  pre:
+    - docker pull golang:1.6
+  post:
+      - docker build -t krustyhack/ipd .
+
+test:
+  override:
+    - docker run -d --name ipd krustyhack/ipd
+    - docker logs -f ipd | tee -a ${CIRCLE_ARTIFACTS}/ipd.log:
+          background: true
+    - grep "Listening on" -a ${CIRCLE_ARTIFACTS}/ipd.log
