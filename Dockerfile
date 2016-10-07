@@ -5,4 +5,5 @@ RUN apt-get update && \
 WORKDIR /go/src/app
 RUN git clone https://github.com/KrustyHack/ipd.git . && \
 	go get github.com/martinp/ipd
+EXPOSE 8080
 CMD ["ipd"]
